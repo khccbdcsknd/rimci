@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rimci – Websites für lokale Unternehmen</title>
+<meta name="description" content="Rimci baut moderne, schnelle Websites mit funktionierendem Kontaktformular für lokale Unternehmen – ohne Baukasten-Kompromisse, ohne monatelange Wartezeit.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Rimci – Websites für lokale Unternehmen">
+<meta property="og:description" content="Moderne, schnelle Websites mit funktionierendem Kontaktformular für lokale Unternehmen.">
+<meta name="theme-color" content="#0b0b0c">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='10' fill='%230b0b0c'/%3E%3Ctext x='50%25' y='58%25' font-family='Arial,sans-serif' font-weight='700' font-size='20' fill='%23c1502a' text-anchor='middle'%3ER%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --acc: #c1502a;
+  --acc-light: #e8875a;
+  --acc-pale: #fbebe3;
+  --ink: #0b0b0c;
+  --ink-2: #17171a;
+  --white: #ffffff;
+  --off-white: #f6f5f3;
+  --text: #2a2a2d;
+  --gray: #6d6d72;
+  --gray-on-dark: #9b9b9f;
+  --border: #e6e4e0;
+  --border-dark: rgba(255,255,255,0.14);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { background: var(--white); color: var(--text); font-family: 'Inter', sans-serif; overflow-x: hidden; }
+h1, h2, h3, .display { font-family: 'Space Grotesk', sans-serif; }
+.icon { width: 1em; height: 1em; display: inline-block; vertical-align: -0.15em; flex-shrink: 0; }
+a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible {
+  outline: 2px solid var(--acc-light); outline-offset: 3px; border-radius: 4px;
+}
+.wrap { max-width: 1320px; margin: 0 auto; padding: 0 60px; }
+
+/* MASK REVEAL SYSTEM */
+.mask { overflow: hidden; display: block; }
+.mask .line { display: block; transform: translateY(112%); transition: transform 900ms var(--ease-out); }
+.mask.visible .line { transform: translateY(0); }
+.reveal { opacity: 0; transform: translateY(32px); transition: opacity 800ms var(--ease-out), transform 800ms var(--ease-out); }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(11,11,12,0.72); backdrop-filter: blur(14px);
+  padding: 0 32px; height: 68px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.logo-icon { width: 34px; height: 34px; background: var(--acc); border-radius: 9px; display: flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 700; color: #fff; font-family: 'Space Grotesk', sans-serif; flex-shrink: 0; }
+.logo-name { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 17px; color: #fff; }
+.logo-sub { font-size: 9px; letter-spacing: 1.8px; text-transform: uppercase; color: var(--gray-on-dark); display: block; }
+.nav-links { display: flex; gap: 30px; list-style: none; align-items: center; }
+.nav-links a { font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.82); text-decoration: none; transition: color 180ms var(--ease-out); }
+.nav-links a:hover { color: #fff; }
+.nav-cta { background: var(--acc) !important; color: #fff !important; padding: 9px 20px; border-radius: 100px; transition: background-color 180ms var(--ease-out), transform 160ms var(--ease-out); }
+.nav-cta:hover { background: var(--acc-light) !important; }
+.nav-cta:active { transform: scale(0.96); }
+
+/* HERO */
+.hero { min-height: 100dvh; background: var(--ink); position: relative; overflow: hidden; display: flex; flex-direction: column; justify-content: center; padding: 140px 60px 100px; }
+.hero-glow { position: absolute; width: 900px; height: 900px; border-radius: 50%; background: radial-gradient(circle, rgba(193,80,42,0.35), transparent 68%); top: -260px; right: -200px; filter: blur(10px); pointer-events: none; }
+.hero-grid { position: absolute; inset: 0; opacity: 0.35; background-image: linear-gradient(rgba(255,255,255,0.045) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.045) 1px, transparent 1px); background-size: 64px 64px; pointer-events: none; -webkit-mask-image: linear-gradient(180deg, black, transparent 85%); mask-image: linear-gradient(180deg, black, transparent 85%); }
+.hero-badge { position: relative; z-index: 2; display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--border-dark); color: rgba(255,255,255,0.85); padding: 7px 15px; border-radius: 100px; font-size: 12.5px; font-weight: 500; margin-bottom: 32px; width: fit-content; }
+.badge-dot { width: 7px; height: 7px; background: var(--acc-light); border-radius: 50%; animation: pulse 2s ease-in-out infinite; }
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.45;transform:scale(0.8)} }
+.hero-title { position: relative; z-index: 2; font-weight: 700; font-size: clamp(52px,8.6vw,132px); line-height: 0.98; letter-spacing: -0.02em; color: #fff; margin-bottom: 36px; text-wrap: balance; }
+.hero-title .line { padding-bottom: 0.05em; }
+.hero-title .accent { color: var(--acc-light); }
+.hero-desc { position: relative; z-index: 2; font-size: 18px; line-height: 1.7; color: var(--gray-on-dark); max-width: 480px; margin-bottom: 44px; }
+.hero-btns { position: relative; z-index: 2; display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 56px; }
+.btn-ind { background: var(--acc); color: #fff; padding: 16px 30px; border-radius: 100px; font-size: 15px; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; transition: background-color 200ms var(--ease-out), transform 200ms var(--ease-out), box-shadow 200ms var(--ease-out); box-shadow: 0 8px 30px rgba(193,80,42,0.35); }
+.btn-ind:hover { background: var(--acc-light); }
+.btn-ind:active { transform: scale(0.97); }
+.btn-outline { border: 1.5px solid var(--border-dark); color: #fff; padding: 14px 28px; border-radius: 100px; font-size: 15px; font-weight: 500; text-decoration: none; transition: border-color 200ms var(--ease-out), background-color 200ms var(--ease-out); }
+.btn-outline:hover { border-color: rgba(255,255,255,0.5); background: rgba(255,255,255,0.05); }
+.btn-outline:active { transform: scale(0.98); }
+.hero-trust { position: relative; z-index: 2; font-size: 13px; color: var(--gray-on-dark); border-top: 1px solid var(--border-dark); padding-top: 22px; max-width: 480px; }
+.hero-trust strong { color: #fff; }
+.scroll-cue { position: absolute; bottom: 32px; left: 60px; z-index: 2; display: flex; align-items: center; gap: 10px; font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gray-on-dark); }
+.scroll-cue svg { width: 14px; height: 14px; animation: bob 1.8s ease-in-out infinite; }
+@keyframes bob { 0%,100%{transform:translateY(0)} 50%{transform:translateY(5px)} }
+
+/* MARQUEE */
+.marquee-bar { background: var(--acc); padding: 16px 0; overflow: hidden; }
+.marquee-wrap { display: flex; gap: 50px; white-space: nowrap; animation: marquee 26s linear infinite; }
+.marquee-bar:hover .marquee-wrap { animation-play-state: paused; }
+.m-item { font-family: 'Space Grotesk', sans-serif; font-size: 14px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.94); flex-shrink: 0; }
+.m-dot { color: rgba(255,255,255,0.4); margin: 0 4px; }
+@keyframes marquee { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+
+/* SECTIONS */
+.section { padding: 130px 0; }
+.section-dark { background: var(--ink); color: #fff; }
+.sec-top { margin-bottom: 76px; max-width: 640px; }
+.sec-tag { display: inline-block; font-size: 12px; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase; color: var(--acc); margin-bottom: 18px; }
+.section-dark .sec-tag { color: var(--acc-light); }
+.sec-title { font-weight: 700; font-size: clamp(34px,4.6vw,58px); line-height: 1.05; letter-spacing: -0.015em; color: var(--ink); margin-bottom: 18px; text-wrap: balance; }
+.section-dark .sec-title { color: #fff; }
+.sec-desc { font-size: 17px; color: var(--gray); line-height: 1.7; max-width: 480px; }
+.section-dark .sec-desc { color: var(--gray-on-dark); }
+
+/* LEISTUNGEN — index list */
+.svc-list { border-top: 1px solid var(--border); }
+.svc-row { display: grid; grid-template-columns: 64px 1fr auto 56px; align-items: center; gap: 28px; padding: 36px 0; border-bottom: 1px solid var(--border); transition: padding-left 260ms var(--ease-out); position: relative; }
+.svc-row:hover { padding-left: 12px; }
+.svc-num { font-family: 'Space Grotesk', sans-serif; font-size: 14px; font-weight: 600; color: var(--gray); }
+.svc-main { min-width: 0; }
+.svc-name { font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: clamp(22px,2.6vw,32px); color: var(--ink); letter-spacing: -0.01em; }
+.svc-text { font-size: 15px; line-height: 1.6; color: var(--gray); max-width: 460px; margin-top: 8px; }
+.svc-icon { width: 40px; height: 40px; color: var(--acc); }
+.svc-arrow { width: 40px; height: 40px; border-radius: 50%; border: 1.5px solid var(--border); display: flex; align-items: center; justify-content: center; color: var(--ink); transition: background-color 220ms var(--ease-out), border-color 220ms var(--ease-out), transform 220ms var(--ease-out); }
+.svc-arrow svg { width: 16px; height: 16px; }
+@media (hover: hover) and (pointer: fine) {
+  .svc-row:hover .svc-arrow { background: var(--acc); border-color: var(--acc); color: #fff; transform: rotate(45deg); }
+}
+
+/* REFERENZEN — stacked dark case studies */
+.ref-list { display: flex; flex-direction: column; }
+.ref-block { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; padding: 64px 0; border-bottom: 1px solid var(--border-dark); text-decoration: none; color: inherit; }
+.ref-block:last-child { border-bottom: none; }
+.ref-visual { aspect-ratio: 4/3; border-radius: 20px; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+.ref-visual .glow { position: absolute; width: 70%; height: 70%; border-radius: 50%; filter: blur(50px); opacity: 0.5; }
+.ref-visual .icon { width: 30%; height: 30%; position: relative; z-index: 2; color: #fff; }
+.ref-cat { font-size: 12px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--acc-light); margin-bottom: 14px; }
+.ref-name { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: clamp(28px,3.4vw,44px); letter-spacing: -0.015em; margin-bottom: 16px; }
+.ref-desc { font-size: 15.5px; line-height: 1.7; color: var(--gray-on-dark); margin-bottom: 22px; max-width: 440px; }
+.ref-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 26px; }
+.ref-tag { font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.85); border: 1px solid var(--border-dark); padding: 5px 12px; border-radius: 100px; }
+.ref-link { font-size: 14px; font-weight: 600; color: #fff; display: inline-flex; align-items: center; gap: 8px; transition: gap 200ms var(--ease-out); }
+.ref-block:hover .ref-link { gap: 12px; }
+
+/* PREISE — editorial split */
+.price-split { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--border); }
+.price-col { padding: 48px 48px 48px 0; border-bottom: 1px solid var(--border); }
+.price-col + .price-col { padding-left: 48px; padding-right: 0; border-left: 1px solid var(--border); }
+.price-eyebrow { display: flex; align-items: center; gap: 10px; margin-bottom: 22px; }
+.price-label { font-size: 12px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--gray); }
+.price-tag { font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: #fff; background: var(--acc); padding: 4px 10px; border-radius: 100px; }
+.price-num { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: clamp(34px,3.6vw,46px); letter-spacing: -0.01em; color: var(--ink); margin-bottom: 4px; }
+.price-sub { font-size: 13px; color: var(--gray); margin-bottom: 30px; }
+.price-list { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+.price-list li { font-size: 14.5px; color: var(--text); display: flex; align-items: flex-start; gap: 10px; }
+.price-chk { width: 16px; height: 16px; margin-top: 3px; color: var(--acc); flex-shrink: 0; }
+
+/* KONTAKT */
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 90px; align-items: start; }
+.contact-title { font-weight: 700; font-size: clamp(36px,4.4vw,58px); line-height: 1.03; letter-spacing: -0.015em; color: #fff; margin-bottom: 22px; text-wrap: balance; }
+.contact-desc { font-size: 16px; line-height: 1.8; color: var(--gray-on-dark); margin-bottom: 40px; max-width: 420px; }
+.c-item { display: flex; align-items: center; gap: 16px; padding: 20px 0; border-top: 1px solid var(--border-dark); }
+.c-item-ico { width: 44px; height: 44px; background: rgba(255,255,255,0.06); color: var(--acc-light); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 19px; flex-shrink: 0; }
+.c-item-lbl { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--gray-on-dark); margin-bottom: 3px; }
+.c-item-val { font-size: 15px; font-weight: 600; color: #fff; }
+.form-title { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 22px; color: #fff; margin-bottom: 26px; }
+.form-group { margin-bottom: 16px; }
+.form-group label { display: block; font-size: 12.5px; font-weight: 500; color: var(--gray-on-dark); margin-bottom: 8px; }
+.form-group input, .form-group textarea { width: 100%; padding: 13px 15px; border: 1.5px solid var(--border-dark); border-radius: 10px; font-family: 'Inter', sans-serif; font-size: 14px; color: #fff; background: rgba(255,255,255,0.04); outline: none; transition: border-color 180ms var(--ease-out), background-color 180ms var(--ease-out); }
+.form-group input::placeholder, .form-group textarea::placeholder { color: rgba(255,255,255,0.32); }
+.form-group input:focus, .form-group textarea:focus { border-color: var(--acc-light); background: rgba(255,255,255,0.07); }
+.form-group textarea { height: 104px; resize: vertical; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.form-btn { width: 100%; background: var(--acc); color: #fff; padding: 16px; border: none; border-radius: 10px; font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 600; cursor: pointer; transition: background-color 200ms var(--ease-out), transform 160ms var(--ease-out); margin-top: 8px; }
+.form-btn:hover { background: var(--acc-light); }
+.form-btn:active { transform: scale(0.98); }
+
+/* FOOTER */
+footer { background: var(--ink); border-top: 1px solid var(--border-dark); padding: 32px 0; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+.footer-copy { font-size: 13px; color: rgba(255,255,255,0.4); }
+.footer-links { display: flex; gap: 24px; }
+.footer-links a { font-size: 13px; color: rgba(255,255,255,0.4); text-decoration: none; transition: color 180ms var(--ease-out); }
+.footer-links a:hover { color: var(--acc-light); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@media(max-width:900px){
+  .wrap { padding: 0 24px; }
+  nav{padding:0 20px;} .nav-links{display:none;}
+  .hero{padding:120px 24px 80px;}
+  .section{padding:80px 0;}
+  .svc-row{grid-template-columns:40px 1fr; row-gap:12px;}
+  .svc-arrow{display:none;}
+  .ref-block{grid-template-columns:1fr; gap:28px; padding:44px 0;}
+  .price-split{grid-template-columns:1fr;}
+  .price-col + .price-col{padding-left:0; border-left:none;}
+  .price-col{padding:36px 0;}
+  .contact-grid{grid-template-columns:1fr; gap:48px;}
+  footer{flex-direction:column; text-align:center;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">
+    <div class="logo-icon">R</div>
+    <div>
+      <span class="logo-sub">Websites für Unternehmen</span>
+      <span class="logo-name">Rimci</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#leistungen">Leistungen</a></li>
+    <li><a href="#referenzen">Referenzen</a></li>
+    <li><a href="#preise">Preise</a></li>
+    <li><a href="#kontakt" class="nav-cta">Kostenlos anfragen</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-grid"></div>
+  <div class="wrap" style="padding:0; position:relative;">
+    <div class="hero-badge"><div class="badge-dot"></div> Schnell gebaut · Fair im Preis · Direkt einsatzbereit</div>
+    <h1 class="hero-title mask" id="heroMask">
+      <span class="line">Websites, die</span>
+      <span class="line accent">Kunden bringen.</span>
+    </h1>
+    <p class="hero-desc">Ich baue moderne, schnelle Websites mit funktionierendem Kontaktformular für lokale Unternehmen – ohne Baukasten-Kompromisse, ohne monatelange Wartezeit.</p>
+    <div class="hero-btns">
+      <a href="#kontakt" class="btn-ind">Kostenlos anfragen →</a>
+      <a href="#referenzen" class="btn-outline">Beispiele ansehen</a>
+    </div>
+    <div class="hero-trust"><strong>2</strong> Referenzprojekte live im Einsatz – Website, Hosting und Kontaktformular funktionsfähig eingerichtet.</div>
+  </div>
+  <div class="scroll-cue">Scrollen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg></div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-bar">
+  <div class="marquee-wrap">
+    <span class="m-item">Website-Erstellung</span><span class="m-dot">✦</span>
+    <span class="m-item">Kontaktformulare</span><span class="m-dot">✦</span>
+    <span class="m-item">Hosting & Domain</span><span class="m-dot">✦</span>
+    <span class="m-item">Pflege & Support</span><span class="m-dot">✦</span>
+    <span class="m-item">Mobile-optimiert</span><span class="m-dot">✦</span>
+    <span class="m-item">Faire Preise</span><span class="m-dot">✦</span>
+    <span class="m-item">Website-Erstellung</span><span class="m-dot">✦</span>
+    <span class="m-item">Kontaktformulare</span><span class="m-dot">✦</span>
+    <span class="m-item">Hosting & Domain</span><span class="m-dot">✦</span>
+    <span class="m-item">Pflege & Support</span><span class="m-dot">✦</span>
+    <span class="m-item">Mobile-optimiert</span><span class="m-dot">✦</span>
+    <span class="m-item">Faire Preise</span><span class="m-dot">✦</span>
+  </div>
+</div>
+
+<!-- LEISTUNGEN -->
+<section class="section" id="leistungen">
+  <div class="wrap">
+    <div class="sec-top mask reveal">
+      <span class="sec-tag">Leistungen</span>
+      <h2 class="sec-title"><span class="mask"><span class="line">Was ich für dich mache</span></span></h2>
+      <p class="sec-desc">Alles, was deine Website braucht, um wirklich Anfragen zu bringen – aus einer Hand.</p>
+    </div>
+    <div class="svc-list">
+      <div class="svc-row reveal">
+        <span class="svc-num">01</span>
+        <div class="svc-main">
+          <div class="svc-name">Website-Erstellung</div>
+          <p class="svc-text">Individuell gestaltete, moderne Website – abgestimmt auf dein Unternehmen und deine Kunden.</p>
+        </div>
+        <svg class="svc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
+        <div class="svc-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+      </div>
+      <div class="svc-row reveal" style="transition-delay:.05s">
+        <span class="svc-num">02</span>
+        <div class="svc-main">
+          <div class="svc-name">Kontaktformular</div>
+          <p class="svc-text">Ein echtes, funktionierendes Formular – Anfragen landen direkt in deinem Postfach.</p>
+        </div>
+        <svg class="svc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+        <div class="svc-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+      </div>
+      <div class="svc-row reveal" style="transition-delay:.1s">
+        <span class="svc-num">03</span>
+        <div class="svc-main">
+          <div class="svc-name">Hosting & Domain</div>
+          <p class="svc-text">Ich richte Hosting ein und verbinde bei Bedarf deine eigene Domain – startklar in wenigen Tagen.</p>
+        </div>
+        <svg class="svc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18"/></svg>
+        <div class="svc-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+      </div>
+      <div class="svc-row reveal" style="transition-delay:.15s">
+        <span class="svc-num">04</span>
+        <div class="svc-main">
+          <div class="svc-name">Pflege & Support</div>
+          <p class="svc-text">Kleine Änderungen, Ansprechpartner bei Fragen – deine Website bleibt aktuell.</p>
+        </div>
+        <svg class="svc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a4 4 0 1 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.9 2.9a2 2 0 0 1-2.8 0 2 2 0 0 1 0-2.8l2.9-2.9z"/></svg>
+        <div class="svc-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REFERENZEN -->
+<section class="section section-dark" id="referenzen">
+  <div class="wrap">
+    <div class="sec-top reveal">
+      <span class="sec-tag">Referenzen</span>
+      <h2 class="sec-title"><span class="mask"><span class="line">Bereits umgesetzt</span></span></h2>
+      <p class="sec-desc">Zwei Beispiele, live im Einsatz – so könnte auch deine Website aussehen.</p>
+    </div>
+    <div class="ref-list">
+      <a href="https://funny-mermaid-2a4687.netlify.app" target="_blank" rel="noopener" class="ref-block reveal">
+        <div class="ref-visual" style="background:#12231a;">
+          <div class="glow" style="background:#4fae6c;"></div>
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="13" r="5"/><path d="M12 8V5M9 6 7.5 4M15 6l1.5-2M7 13H3M21 13h-4M8.5 17 6.5 19.5M15.5 17l2 2.5M9.5 10.5 8 9M14.5 10.5 16 9"/></svg>
+        </div>
+        <div>
+          <div class="ref-cat">Schädlingsbekämpfung</div>
+          <div class="ref-name">Kammerjäger Börgel</div>
+          <p class="ref-desc">Komplett neue Website für ein Frankfurter Unternehmen, das vorher keine eigene Seite hatte – inklusive funktionierendem Anfrageformular.</p>
+          <div class="ref-tags"><span class="ref-tag">Neubau</span><span class="ref-tag">Kontaktformular</span><span class="ref-tag">Hosting</span></div>
+          <div class="ref-link">Website ansehen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:16px;height:16px;"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+        </div>
+      </a>
+      <a href="https://drop-77e47bc3-735.tundra-vanilla.workers.dev" target="_blank" rel="noopener" class="ref-block reveal" style="transition-delay:.1s">
+        <div class="ref-visual" style="background:#241608;">
+          <div class="glow" style="background:#e07a35;"></div>
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21c4.5 0 7-2.8 7-6.3 0-3.3-2.2-4.9-3.3-7.4-.3 1.6-1.4 2.7-2.2 2.7.3-2.3-.6-4.6-2.6-6.5-.4 2.5-1.6 3.9-3.4 5.8C6 10.7 5 12.4 5 14.7 5 18.2 7.5 21 12 21z"/><path d="M12 21c1.8 0 3-1.2 3-2.9 0-1.6-1-2.4-1.6-3.5-.2.9-.8 1.4-1.2 1.4.2-1.1-.2-2.2-1.1-3-.4 1.1-1 1.7-1.6 2.5-.6.8-1.1 1.5-1.1 2.6 0 1.7 1.2 2.9 2.6 2.9z"/></svg>
+        </div>
+        <div>
+          <div class="ref-cat">Heizung · Sanitär · Bad</div>
+          <div class="ref-name">Die Wärmebauer GmbH</div>
+          <p class="ref-desc">Neue Website für einen Frankfurter Heizungsbau-Betrieb – mit allen Leistungen, echten Google-Bewertungen und Anfrageformular.</p>
+          <div class="ref-tags"><span class="ref-tag">Neubau</span><span class="ref-tag">Kontaktformular</span><span class="ref-tag">Hosting</span></div>
+          <div class="ref-link">Website ansehen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:16px;height:16px;"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- PREISE -->
+<section class="section" id="preise">
+  <div class="wrap">
+    <div class="sec-top reveal">
+      <span class="sec-tag">Preise</span>
+      <h2 class="sec-title"><span class="mask"><span class="line">Transparent & fair</span></span></h2>
+      <p class="sec-desc">Zwei einfache Modelle – je nachdem, ob du auch laufende Betreuung willst.</p>
+    </div>
+    <div class="price-split">
+      <div class="price-col reveal">
+        <div class="price-eyebrow"><span class="price-label">Website</span></div>
+        <div class="price-num">ab 249 €</div>
+        <div class="price-sub">einmalige Zahlung</div>
+        <ul class="price-list">
+          <li><svg class="price-chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Individuelle Website-Erstellung</li>
+          <li><svg class="price-chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Funktionierendes Kontaktformular</li>
+          <li><svg class="price-chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Mobile-optimiert</li>
+          <li><svg class="price-chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Einrichtung von Hosting & Domain</li>
+        </ul>
+      </div>
+      <div class="price-col reveal" style="transition-delay:.08s">
+        <div class="price-eyebrow"><span class="price-label">Website + Pflege</span><span class="price-tag">Empfohlen</span></div>
+        <div class="price-num">ab 249 € + 19 €/Mon.</div>
+        <div class="price-sub">einmalig + monatlich</div>
+        <ul class="price-list">
+          <li><svg class="price-chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Alles aus "Website"</li>
+          <li><svg class="price-chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Laufende Domain- & Hosting-Betreuung</li>
+          <li><svg class="price-chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Kleine Textänderungen inklusive</li>
+          <li><svg class="price-chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Direkter Ansprechpartner bei Fragen</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KONTAKT -->
+<section class="section section-dark" id="kontakt">
+  <div class="wrap">
+    <div class="contact-grid">
+      <div class="reveal">
+        <span class="sec-tag">Kontakt</span>
+        <h2 class="contact-title"><span class="mask"><span class="line">Lass uns starten</span></span></h2>
+        <p class="contact-desc">Erzähl mir kurz von deinem Unternehmen – ich melde mich mit einem unverbindlichen Vorschlag.</p>
+        <div class="c-item">
+          <div class="c-item-ico"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></div>
+          <div><div class="c-item-lbl">E-Mail</div><div class="c-item-val">nikorimac64@gmail.com</div></div>
+        </div>
+      </div>
+      <div class="reveal" style="transition-delay:.12s">
+        <div class="form-title">Kostenlose Anfrage</div>
+        <form id="contactForm">
+          <input type="hidden" name="access_key" value="3d649651-c3d5-450a-99d2-8a8314643ff7">
+          <input type="hidden" name="subject" value="Neue Anfrage über die Website – Rimci">
+          <input type="hidden" name="from_name" value="Rimci Website">
+          <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
+          <div class="form-row">
+            <div class="form-group"><label>Vorname</label><input type="text" name="vorname" placeholder="Max" required></div>
+            <div class="form-group"><label>Nachname</label><input type="text" name="nachname" placeholder="Mustermann" required></div>
+          </div>
+          <div class="form-group"><label>Unternehmen</label><input type="text" name="unternehmen" placeholder="Firmenname"></div>
+          <div class="form-group"><label>Telefon / E-Mail</label><input type="text" name="kontakt" placeholder="0160 … oder max@example.de" required></div>
+          <div class="form-group"><label>Nachricht</label><textarea name="nachricht" placeholder="Kurz worum es geht..."></textarea></div>
+          <button type="submit" class="form-btn" id="formBtn">Jetzt kostenlos anfragen →</button>
+          <p id="formMsg" style="font-size:13px; margin-top:14px; text-align:center; display:none;"></p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;">
+    <span class="footer-copy">© 2026 Rimci. Alle Rechte vorbehalten.</span>
+    <div class="footer-links">
+      <a href="#">Impressum</a>
+      <a href="#">Datenschutz</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+var obs = new IntersectionObserver(function(entries){
+  entries.forEach(function(e){ if(e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal, .sec-top .mask, .contact-title .mask, .sec-title .mask').forEach(function(el){ obs.observe(el); });
+
+requestAnimationFrame(function(){
+  setTimeout(function(){
+    var hero = document.getElementById('heroMask');
+    if (hero) hero.classList.add('visible');
+  }, 120);
+});
+
+var form = document.getElementById('contactForm');
+var formBtn = document.getElementById('formBtn');
+var formMsg = document.getElementById('formMsg');
+
+form.addEventListener('submit', function(e){
+  e.preventDefault();
+  formBtn.disabled = true;
+  formBtn.textContent = 'Wird gesendet...';
+  formMsg.style.display = 'none';
+
+  var data = new FormData(form);
+  fetch('https://api.web3forms.com/submit', {
+    method: 'POST',
+    headers: { 'Accept': 'application/json' },
+    body: data
+  })
+  .then(function(res){ return res.json(); })
+  .then(function(json){
+    if (json.success) {
+      formMsg.textContent = 'Danke! Deine Anfrage wurde verschickt – ich melde mich bald.';
+      formMsg.style.color = '#e8875a';
+      form.reset();
+    } else {
+      formMsg.textContent = 'Es gab ein Problem beim Senden. Bitte schreib mir direkt eine E-Mail.';
+      formMsg.style.color = '#e05a5a';
+    }
+    formMsg.style.display = 'block';
+  })
+  .catch(function(){
+    formMsg.textContent = 'Es gab ein Problem beim Senden. Bitte schreib mir direkt eine E-Mail.';
+    formMsg.style.color = '#e05a5a';
+    formMsg.style.display = 'block';
+  })
+  .finally(function(){
+    formBtn.disabled = false;
+    formBtn.textContent = 'Jetzt kostenlos anfragen →';
+  });
+});
+</script>
+</body>
+</html>
