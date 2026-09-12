@@ -49,7 +49,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 /* NAV */
 nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-  background: rgba(11,11,12,0.72); backdrop-filter: blur(14px);
+  background: rgba(11,11,12,0.96);
   padding: 0 32px; height: 68px;
   display: flex; align-items: center; justify-content: space-between;
 }
@@ -66,7 +66,7 @@ nav {
 
 /* HERO */
 .hero { min-height: 100dvh; background: var(--ink); position: relative; overflow: hidden; display: flex; flex-direction: column; justify-content: center; padding: 140px 60px 100px; }
-.hero-glow { position: absolute; width: 900px; height: 900px; border-radius: 50%; background: radial-gradient(circle, rgba(193,80,42,0.35), transparent 68%); top: -260px; right: -200px; filter: blur(10px); pointer-events: none; }
+.hero-glow { position: absolute; width: 900px; height: 900px; border-radius: 50%; background: radial-gradient(circle, rgba(193,80,42,0.35), transparent 68%); top: -260px; right: -200px; pointer-events: none; }
 .hero-grid { position: absolute; inset: 0; opacity: 0.35; background-image: linear-gradient(rgba(255,255,255,0.045) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.045) 1px, transparent 1px); background-size: 64px 64px; pointer-events: none; -webkit-mask-image: linear-gradient(180deg, black, transparent 85%); mask-image: linear-gradient(180deg, black, transparent 85%); }
 .hero-badge { position: relative; z-index: 2; display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--border-dark); color: rgba(255,255,255,0.85); padding: 7px 15px; border-radius: 100px; font-size: 12.5px; font-weight: 500; margin-bottom: 32px; width: fit-content; }
 .badge-dot { width: 7px; height: 7px; background: var(--acc-light); border-radius: 50%; animation: pulse 2s ease-in-out infinite; }
@@ -127,7 +127,7 @@ nav {
 .ref-block { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; padding: 64px 0; border-bottom: 1px solid var(--border-dark); text-decoration: none; color: inherit; }
 .ref-block:last-child { border-bottom: none; }
 .ref-visual { aspect-ratio: 4/3; border-radius: 20px; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
-.ref-visual .glow { position: absolute; width: 70%; height: 70%; border-radius: 50%; filter: blur(50px); opacity: 0.5; }
+.ref-visual .glow { position: absolute; width: 130%; height: 130%; border-radius: 50%; background: radial-gradient(circle closest-side, currentColor, transparent); opacity: 0.5; }
 .ref-visual .icon { width: 30%; height: 30%; position: relative; z-index: 2; color: #fff; }
 .ref-cat { font-size: 12px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--acc-light); margin-bottom: 14px; }
 .ref-name { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: clamp(28px,3.4vw,44px); letter-spacing: -0.015em; margin-bottom: 16px; }
@@ -318,7 +318,7 @@ footer { background: var(--ink); border-top: 1px solid var(--border-dark); paddi
     <div class="ref-list">
       <a href="https://funny-mermaid-2a4687.netlify.app" target="_blank" rel="noopener" class="ref-block reveal">
         <div class="ref-visual" style="background:#12231a;">
-          <div class="glow" style="background:#4fae6c;"></div>
+          <div class="glow" style="color:#4fae6c;"></div>
           <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="13" r="5"/><path d="M12 8V5M9 6 7.5 4M15 6l1.5-2M7 13H3M21 13h-4M8.5 17 6.5 19.5M15.5 17l2 2.5M9.5 10.5 8 9M14.5 10.5 16 9"/></svg>
         </div>
         <div>
@@ -331,7 +331,7 @@ footer { background: var(--ink); border-top: 1px solid var(--border-dark); paddi
       </a>
       <a href="https://drop-77e47bc3-735.tundra-vanilla.workers.dev" target="_blank" rel="noopener" class="ref-block reveal" style="transition-delay:.1s">
         <div class="ref-visual" style="background:#241608;">
-          <div class="glow" style="background:#e07a35;"></div>
+          <div class="glow" style="color:#e07a35;"></div>
           <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21c4.5 0 7-2.8 7-6.3 0-3.3-2.2-4.9-3.3-7.4-.3 1.6-1.4 2.7-2.2 2.7.3-2.3-.6-4.6-2.6-6.5-.4 2.5-1.6 3.9-3.4 5.8C6 10.7 5 12.4 5 14.7 5 18.2 7.5 21 12 21z"/><path d="M12 21c1.8 0 3-1.2 3-2.9 0-1.6-1-2.4-1.6-3.5-.2.9-.8 1.4-1.2 1.4.2-1.1-.2-2.2-1.1-3-.4 1.1-1 1.7-1.6 2.5-.6.8-1.1 1.5-1.1 2.6 0 1.7 1.2 2.9 2.6 2.9z"/></svg>
         </div>
         <div>
